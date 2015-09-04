@@ -16,22 +16,6 @@ import ass1.*;
  */
 public class TestMyCoolGameObject {
 
-	
-	
-	public static void createTestObjects(){
-		
-		//Should look good when we create using the default constructor
-		MyCoolGameObject cgo = new MyCoolGameObject();
-		
-		// Should not break if we apply transformations for example
-		// If we uncommented these lines (or wrote other transformations) 
-		// it should not break your object
-		/**
-		cgo.translate(-0.2,0.2);
-		cgo.rotate(45);
-		cgo.scale(0.25);
-		**/    
-	}
    
     /**
      * A simple test for MyCoolGameObject
@@ -49,11 +33,11 @@ public class TestMyCoolGameObject {
         // Create a camera
         Camera camera = new Camera(GameObject.ROOT);
         
-        createTestObjects();
-        
         // Add Key Inputs
         MyCoolGameObject cgo = new MyCoolGameObject();
-        
+		cgo.translate(-0.2,0.2);
+		cgo.rotate(45);
+		cgo.scale(0.25);
         
         // Add the game engine
         GameEngine engine = new GameEngine(camera);

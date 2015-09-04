@@ -378,12 +378,12 @@ public class GameObject {
 				double[] pointB = MathUtil.multiply(m, new double[] {points[2],points[3],1});
 
 				// like triangles
-				/*			 B
-				 *		P  +|
+				/*			+ B
+				 *	   P  + |
 				 * 		+	|
 				 *    +	|	|
 				 * 	+	|	|
-				 * +----|---|
+				 *+-----|---|
 				 * A
 				 */
 				if ( (p[0]-pointA[0])/(p[1]-pointA[1]) - (pointB[2]-pointA[0])/(pointB[3]-pointA[1]) < epsilon) {

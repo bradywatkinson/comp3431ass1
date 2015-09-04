@@ -10,9 +10,7 @@ import javax.sound.sampled.Clip;
 
 public class BoardObject extends PolygonalGameObject {
 
-	public static final int BOUNCE_THRESHOLD = 4;
-	
-	private int sound = 0;
+	public static final int BOUNCE_THRESHOLD = 4; // prevents changing direction for 4 frames after bounce
 
 	public List<BouncingBall> myBalls = new ArrayList<BouncingBall>();
 
@@ -33,8 +31,6 @@ public class BoardObject extends PolygonalGameObject {
 
 		BouncingBall curr;
 		BouncingBall test;
-		
-		++sound;
 
 		for (int i=0;i<myBalls.size()-1;++i) {
 			curr = myBalls.get(i);
@@ -68,22 +64,17 @@ public class BoardObject extends PolygonalGameObject {
 								test.reflectOffBall(Math.toDegrees(Math.atan(deltaY/deltaX)));
 							}	
 
-							System.out.println(sound);
-							
-							if (sound > 60) {
-								sound = 0;
-								new Thread(new Runnable() {
-									public void run() {
-										try {
-											AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Resources/jump.wav"));
-											Clip clip = AudioSystem.getClip();
-											clip.open(audioIn);
-											clip.start();
-										} catch (Exception e) {
-										}
+							new Thread(new Runnable() {
+								public void run() {
+									try {
+										AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("Resources/jump.wav"));
+										Clip clip = AudioSystem.getClip();
+										clip.open(audioIn);
+										clip.start();
+									} catch (Exception e) {
 									}
-								}).start();
-							}
+								}
+							}).start();
 							
 							// System.out.println(Math.toDegrees(Math.atan(deltaY/deltaX))+" "+ Math.toDegrees(Math.atan(-deltaY/deltaX)));
 
